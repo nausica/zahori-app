@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/<%= grunt.config.get('pkg.name') %>.css"/>
+	<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+	<script type="text/javascript" src="/static/utils.js"></script>
+	<script type="text/javascript" src="/static/angular.js"></script>
+	<script type="text/javascript" src="/static/bootstrap.js"></script>
+	<script type="text/javascript" src="/static/<%= grunt.config.get('pkg.name') %>.js"></script>
+</head>
+
+<body ng-controller="ZahoriCtrl">
+	
+	<!--
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-include="'header.tpl.html'"></div>
+	<div ng-view ></div>
+	-->
+	<p>Your location is: {{coords}}</p>
+</body>
+</html>
