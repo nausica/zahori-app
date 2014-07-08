@@ -2,9 +2,10 @@
 <html lang="en" ng-app="app">
 <head>
 	<link rel="stylesheet" type="text/css" href="/static/<%= grunt.config.get('pkg.name') %>.css"/>
-	<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+	<script src="http://maps.googleapis.com/maps/api/js?libraries=weather,visualization&sensor=false&language=en&v=3.13"></script>
 	<script type="text/javascript" src="/static/utils.js"></script>
 	<script type="text/javascript" src="/static/angular.js"></script>
+	<script type="text/javascript" src="/static/angular-google-maps.js"></script>
 	<script type="text/javascript" src="/static/bootstrap.js"></script>
 	<script type="text/javascript" src="/static/<%= grunt.config.get('pkg.name') %>.js"></script>
 </head>
@@ -15,6 +16,29 @@
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-include="'header.tpl.html'"></div>
 	<div ng-view ></div>
 	-->
-	<p>Your location is: {{coords}}</p>
+	<div class="container-fluid">
+	<div class="row-fluid">
+    	<div class="page-title">
+        	<h2>zahori-app</h2>
+    	</div>
+	    <button class="btn btn-danger" ng-click="addFountain()">Add Fountain</button>
+</div>
+<div class="row-fluid">
+		<p>Your location is: {{coords}}</p>
+		<google-map class="col-md-12" center="map.center" draggable="true" zoom="map.zoom" control="map.control">
+			<!-- predefined markers -->
+	        <!-- rendering via ng-repear, HIGH OVERHEAD via DOM Manipulation -->
+	        <marker ng-repeat="m in map.markers" coords="m" icon="m.icon" options="m.options" click="onMarkerClicked(m)">
+	            <marker-label content="m.title" anchor="22 0" class="marker-labels"/>
+	         
+	            <window show="m.showWindow" closeClick="'closeClick'" ng-cloak>
+                    <p> This is an info window at {{ m.latitude | number:4 }}, {{ m.longitude | number:4 }}!</p>
+                </window>
+	        </marker>
+		</google-map>
+
+        </div>
+    </div>
+
 </body>
 </html>

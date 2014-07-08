@@ -97,6 +97,10 @@ module.exports = function (grunt) {
 				src:['vendor/angular/angular.js', 'vendor/angular/angular-route.js', 'vendor/angular/angularjs-geolocation.js'],
 				dest: '<%= distdir %>/angular.js'
 			},
+			maps: {
+				src:['vendor/angular/angular-google-maps.js'],
+				dest: '<%= distdir %>/angular-google-maps.js'
+			},
 			mongo: {
 				src:['vendor/mongolab/*.js'],
 				dest: '<%= distdir %>/mongolab.js'
